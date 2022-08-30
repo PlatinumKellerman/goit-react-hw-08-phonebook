@@ -22,7 +22,7 @@ export function App() {
       <Filter title="Find contacts by name:" />
       <h2>Contacts</h2>
       <Contacts title="Contacts" />
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={1500} />
     </Container>
   );
 }
