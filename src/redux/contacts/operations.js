@@ -42,3 +42,21 @@ export const deleteContactAsync = createAsyncThunk(
     }
   }
 );
+
+export const patchContact = createAsyncThunk(
+  'contacts/patchContact',
+  async (contactwithId, { rejectWithValue }) => {
+    try {
+      const contactId = contactwithId.id;
+      const contact = {
+        name: contactwithId.name,
+        number: contactwithId.number,
+      };
+      await contactsAPI.patchContact(contact, contactId);
+      return await contactsAPI.getContacts();
+    } catch (error) {
+      toast.error(error);
+      return rejectWithValue(error);
+    }
+  }
+);
