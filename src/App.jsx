@@ -1,28 +1,40 @@
 import { useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getContactsAsync } from './redux/contacts/operations';
-import { Container } from './components/Container/index';
-import { PhonebookForm } from './components/PhonebookForm/index';
-import { Contacts } from 'components/Contacts/index';
-import { Filter } from './components/Filter/index';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import { getIsLoadingStatus } from './redux/authentication/selectors';
+import { getCurrentUser } from './redux/authentication/operations';
+// import { PrivateRoutes } from 'routes/PrivateRoutes';
+import { PublicRoutes } from 'routes/PublicRoutes';
+import { Layout } from './Layout/Layout';
+import { RegisterPage } from './pages/RegisterPage/RegisterPage';
+import { LogInPage } from './pages/LogInPage/LogInPage';
 
 export function App() {
   const dispatch = useDispatch();
+  // const isFetchingCurrentUser = useSelector(getIsLoadingStatus);
 
   useEffect(() => {
-    dispatch(getContactsAsync());
+    dispatch(getCurrentUser());
   }, [dispatch]);
 
   return (
-    <Container>
-      <h1>Phonebook</h1>
-      <PhonebookForm title="Phonebook" />
-      <Filter title="Find contacts by name:" />
-      <h2>Contacts</h2>
-      <Contacts title="Contacts" />
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="login" />} />
+          <Route element={<PublicRoutes />}>
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<LogInPage />} />
+          </Route>
+          {/* <Route element={<PrivateRoutes />}>
+          <Route path="contacts" element={<ContactsPage />} />
+        </Route>
+        <Route path="/*" element={<NotFoundPage />} /> */}
+        </Route>
+      </Routes>
       <ToastContainer autoClose={1500} />
-    </Container>
+    </>
   );
 }

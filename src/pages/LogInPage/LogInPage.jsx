@@ -1,14 +1,12 @@
 import { Formik, ErrorMessage, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { logIn } from '../../redux/authentication/operations';
 
-export function RegisterForm() {
+export function LogInPage() {
   const dispatch = useDispatch();
-  // const contacts = useSelector(getContacts);
 
   const schema = yup.object().shape({
-    name: yup.string().required('This field cannot be empty'),
     email: yup.string().min(6).max(18).required('This field cannot be empty'),
     password: yup
       .string()
@@ -16,29 +14,19 @@ export function RegisterForm() {
       .required('Password should be of minimum 8 characters length'),
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    dispatch(authOperations.register(values));
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(logIn(values));
+    resetForm();
   };
 
   return (
     <>
       <Formik
-        initialValues={{ name: '', email: '', password: '' }}
+        initialValues={{ email: '', password: '' }}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
         <Form>
-          <label htmlFor="name">
-            Name:
-            <div>
-              <Field
-                name="name"
-                type="text"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              />
-              <ErrorMessage name="name" render={message => <p>{message}</p>} />
-            </div>
-          </label>
           <label htmlFor="email">
             Email:
             <div>
@@ -64,7 +52,7 @@ export function RegisterForm() {
               />
             </div>
           </label>
-          <button type="submit">Add contact</button>
+          <button type="submit">LogIn</button>
         </Form>
       </Formik>
     </>
