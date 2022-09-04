@@ -5,11 +5,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { getIsLoadingStatus } from './redux/authentication/selectors';
 import { getCurrentUser } from './redux/authentication/operations';
-// import { PrivateRoutes } from 'routes/PrivateRoutes';
+import { PrivateRoutes } from 'routes/PrivateRoutes';
 import { PublicRoutes } from 'routes/PublicRoutes';
 import { Layout } from './Layout/Layout';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { LogInPage } from './pages/LogInPage/LogInPage';
+import { ContactsPage } from './pages/ContactsPage/ContactsPage';
+import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 
 export function App() {
   const dispatch = useDispatch();
@@ -28,10 +30,10 @@ export function App() {
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LogInPage />} />
           </Route>
-          {/* <Route element={<PrivateRoutes />}>
-          <Route path="contacts" element={<ContactsPage />} />
-        </Route>
-        <Route path="/*" element={<NotFoundPage />} /> */}
+          <Route element={<PrivateRoutes />}>
+            <Route path="contacts" element={<ContactsPage />} />
+          </Route>
+          <Route path="/*" element={<PageNotFound />} />
         </Route>
       </Routes>
       <ToastContainer autoClose={1500} />

@@ -8,7 +8,7 @@ export function RegisterPage() {
 
   const schema = yup.object().shape({
     name: yup.string().required('This field cannot be empty'),
-    email: yup.string().min(6).max(18).required('This field cannot be empty'),
+    email: yup.string().min(6).max(28).required('This field cannot be empty'),
     password: yup
       .string()
       .min(6)
