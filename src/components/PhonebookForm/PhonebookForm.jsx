@@ -1,79 +1,106 @@
 import { useDispatch } from 'react-redux';
 import { addContactAsync } from '../../redux/contacts/operations';
-import { Formik, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
 import { getContacts } from '../../redux/contacts/selectors';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
-import {
-  MainForm,
-  PhonebookFormLabel,
-  PhonebookInput,
-  SubmitButton,
-  ErrorText,
-  Wrapper,
-} from './PhonebookForm.styled';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import { useFormik } from 'formik';
+import { Label } from './PhonebookForm.styled';
 
 export function PhonebookForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const schema = yup.object().shape({
-    name: yup.string().required('This field cannot be empty'),
-    number: yup.string().min(6).max(18).required('This field cannot be empty'),
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      number: '',
+    },
+
+    onSubmit: (values, { resetForm }) => {
+      const foundContact = contacts.filter(contact => {
+        return contact.name.toLowerCase() === values.name.toLowerCase();
+      });
+      if (foundContact.length > 0) {
+        toast.error('This contact already exists');
+        return;
+      }
+      dispatch(addContactAsync(values));
+      resetForm();
+    },
+
+    validationSchema: yup.object().shape({
+      name: yup.string().required('This field cannot be empty'),
+      number: yup
+        .string()
+        .min(6)
+        .max(18)
+        .required('This field cannot be empty'),
+    }),
   });
 
-  const handleSubmit = (values, { resetForm }) => {
-    const foundContact = contacts.filter(contact => {
-      return contact.name.toLowerCase() === values.name.toLowerCase();
-    });
-    if (foundContact.length > 0) {
-      toast.error('This contact already exists');
-      return;
-    }
-    dispatch(addContactAsync(values));
-    resetForm();
-  };
-
   return (
-    <>
-      <Formik
-        initialValues={{ name: '', number: '' }}
-        validationSchema={schema}
-        onSubmit={handleSubmit}
+    <Container
+      sx={{
+        marginTop: '30px',
+        width: 500,
+        height: 300,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#ffffff',
+      }}
+    >
+      <form
+        onSubmit={formik.handleSubmit}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
       >
-        <MainForm>
-          <PhonebookFormLabel htmlFor="name">
-            Name:
-            <Wrapper>
-              <PhonebookInput
-                name="name"
-                type="text"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              />
-              <ErrorMessage
-                name="name"
-                render={message => <ErrorText>{message}</ErrorText>}
-              />
-            </Wrapper>
-          </PhonebookFormLabel>
-          <PhonebookFormLabel htmlFor="number">
-            Number:
-            <Wrapper>
-              <PhonebookInput
-                name="number"
-                type="tel"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              />
-              <ErrorMessage
-                render={message => <ErrorText>{message}</ErrorText>}
-                name="number"
-              />
-            </Wrapper>
-          </PhonebookFormLabel>
-          <SubmitButton type="submit">Add contact</SubmitButton>
-        </MainForm>
-      </Formik>
-    </>
+        <Label>Phonebook</Label>
+        <TextField
+          variant="outlined"
+          id="name"
+          name="name"
+          label="Name"
+          sx={{ mb: '20px', width: '400px' }}
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          error={formik.touched.name}
+          helperText={formik.touched.name && formik.errors.name}
+        />
+        <TextField
+          variant="outlined"
+          id="number"
+          name="number"
+          label="Number"
+          sx={{ mb: '30px', width: '400px' }}
+          value={formik.values.number}
+          onChange={formik.handleChange}
+          error={formik.touched.number}
+          helperText={formik.touched.number && formik.errors.number}
+        />
+        <Button
+          sx={{
+            width: '200px',
+            backgroundColor: '#d55448',
+            '&:hover': {
+              backgroundColor: '#c29545',
+            },
+          }}
+          variant="contained"
+          size="medium"
+          type="submit"
+        >
+          Add contact
+        </Button>
+      </form>
+    </Container>
   );
 }

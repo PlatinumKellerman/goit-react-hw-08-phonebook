@@ -19,7 +19,7 @@ export function LogInPage() {
       resetForm();
     },
     validationSchema: yup.object().shape({
-      email: yup.string().required('This field cannot be empty'),
+      name: yup.string().required('This field cannot be empty'),
       password: yup
         .string()
         .min(6)

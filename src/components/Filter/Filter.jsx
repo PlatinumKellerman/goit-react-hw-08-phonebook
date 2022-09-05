@@ -7,23 +7,30 @@ import { FilterLabel, FilterInput } from './Filter.styled';
 export function Filter({ title }) {
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
-  const changeFilterValue = e => {
-    dispatch(changeFilter(e.currentTarget.value));
-  };
+
+  const formik = useFormik({
+  
+  });
 
   return (
-    <FilterLabel htmlFor="filter">
-      {title}
-      <FilterInput
-        name="filter"
-        type="text"
-        value={value}
-        onChange={changeFilterValue}
-      />
-    </FilterLabel>
+    
   );
 }
 
-Filter.propTypes = {
-  title: PropTypes.string,
-};
+// const changeFilterValue = e => {
+//   dispatch(changeFilter(e.currentTarget.value));
+// };
+
+// <FilterLabel htmlFor="filter">
+//   {title}
+//   <FilterInput
+//     name="filter"
+//     type="text"
+//     value={value}
+//     onChange={changeFilterValue}
+//   />
+// </FilterLabel>
+
+// Filter.propTypes = {
+//   title: PropTypes.string,
+// };
