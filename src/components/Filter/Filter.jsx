@@ -25,5 +25,5 @@ export function Filter({ title }) {
 }
 
 Filter.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
