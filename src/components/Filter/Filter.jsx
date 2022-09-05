@@ -8,13 +8,9 @@ export function Filter({ title }) {
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  const formik = useFormik({
-  
-  });
+  const onChange = e => dispatch(changeFilter(e.target.value));
 
-  return (
-    
-  );
+  return <div>sfdsd</div>;
 }
 
 // const changeFilterValue = e => {
@@ -31,6 +27,6 @@ export function Filter({ title }) {
 //   />
 // </FilterLabel>
 
-// Filter.propTypes = {
-//   title: PropTypes.string,
-// };
+Filter.propTypes = {
+  title: PropTypes.string,
+};
