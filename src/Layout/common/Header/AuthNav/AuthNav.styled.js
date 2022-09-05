@@ -20,4 +20,9 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const StyledButton = styled.button``;
+export const StyledButton = styled.button`
+  margin-right: 15px;
+  &:last-child {
+    margin-right: 0px;
+  }
+`;

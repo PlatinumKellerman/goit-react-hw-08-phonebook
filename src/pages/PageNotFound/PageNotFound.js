@@ -12,7 +12,7 @@ export const NotFoundPage = styled.div`
 export function PageNotFound() {
   return (
     <>
-      {/* <GoBackLink to={'/'}>{'<'} Go to Homepage</GoBackLink> */}
+      <GoBackLink to={'/'}>{'<'} Go to Homepage</GoBackLink>
       <NotFoundPage> Sorry, page not found! </NotFoundPage>;
     </>
   );
