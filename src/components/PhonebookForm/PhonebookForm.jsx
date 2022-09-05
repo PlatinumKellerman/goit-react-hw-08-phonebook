@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useFormik } from 'formik';
 import { Label } from './PhonebookForm.styled';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 
 export function PhonebookForm() {
   const dispatch = useDispatch();
@@ -45,7 +46,6 @@ export function PhonebookForm() {
   return (
     <Container
       sx={{
-        marginTop: '30px',
         width: 500,
         height: 300,
         display: 'flex',
@@ -88,7 +88,9 @@ export function PhonebookForm() {
         />
         <Button
           sx={{
-            width: '200px',
+            width: '50px',
+            height: '60px',
+            borderRadius: '50%',
             backgroundColor: '#d55448',
             '&:hover': {
               backgroundColor: '#c29545',
@@ -98,7 +100,7 @@ export function PhonebookForm() {
           size="medium"
           type="submit"
         >
-          Add contact
+          <PersonAddAltOutlinedIcon />
         </Button>
       </form>
     </Container>

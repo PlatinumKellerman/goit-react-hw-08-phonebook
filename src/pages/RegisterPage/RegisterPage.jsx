@@ -5,6 +5,7 @@ import { register } from '../../redux/authentication/operations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import { RegisterLabel } from './RegisterPage.styled';
 
 export function RegisterPage() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ export function RegisterPage() {
           alignItems: 'center',
         }}
       >
+        <RegisterLabel>Please, register:</RegisterLabel>
         <TextField
           variant="outlined"
           id="name"

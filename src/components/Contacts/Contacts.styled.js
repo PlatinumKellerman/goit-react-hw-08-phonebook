@@ -1,34 +1,36 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
+  width: 500px;
   display: flex;
   flex-direction: column;
-  background-color: lightsteelblue;
-  padding: 30px;
-  border-radius: 15px;
+  background-color: #ffffff;
+  padding: 40px;
 `;
 
-export const ListWrapper = styled.div`
-  display: block;
-  height: 470px;
-  overflow-y: auto;
-  ::-webkit-scrollbar {
-    width: 10px;
-    cursor: pointer;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: lightsteelblue;
-    border-radius: 50px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 50px;
-    border: 1px solid transparent;
-    background-clip: content-box;
-    background-color: lightskyblue;
-    cursor: pointer;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: lightblue;
-    cursor: pointer;
-  }
+export const FilterLabel = styled.p`
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #323030;
+  background-color: #ffffff;
+  padding-bottom: 10px;
+`;
+
+export const MessageWrapper = styled.div`
+  display: flex;
+  width: 500px;
+  background-color: #ffffff;
+  padding: 20px;
+  justify-content: center;
+`;
+
+export const Message = styled.p`
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
 `;

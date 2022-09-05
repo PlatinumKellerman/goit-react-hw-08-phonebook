@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ListItem = styled.li`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   margin-bottom: 10px;
   font-weight: 500;
   align-items: center;
@@ -12,27 +12,38 @@ export const ListItem = styled.li`
 
 export const ItemName = styled.p`
   display: flex;
+  font-size: 18px;
   align-items: flex-end;
   padding-bottom: 10px;
 `;
 
 export const ItemNumber = styled.p`
   display: flex;
+  font-size: 18px;
   align-items: flex-end;
   padding-bottom: 10px;
 `;
 
 export const DeleteButton = styled.button`
-  background-color: azure;
-  width: 60px;
-  border: 1px solid azure;
-  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  padding: 0px;
   :hover,
   :focus,
   :active {
-    background-color: red;
-    color: aliceblue;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: #d55448;
+    color: #ffffff;
+    border-radius: 50%;
     cursor: pointer;
-    border: 1px solid red;
   }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

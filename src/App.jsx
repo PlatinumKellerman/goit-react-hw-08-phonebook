@@ -1,21 +1,19 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { getIsLoadingStatus } from './redux/authentication/selectors';
 import { getCurrentUser } from './redux/authentication/operations';
 import { PrivateRoutes } from 'routes/PrivateRoutes';
 import { PublicRoutes } from 'routes/PublicRoutes';
 import { Layout } from './Layout/Layout';
-import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { LogInPage } from './pages/LogInPage/LogInPage';
+import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { ContactsPage } from './pages/ContactsPage/ContactsPage';
 import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 
 export function App() {
   const dispatch = useDispatch();
-  // const isFetchingCurrentUser = useSelector(getIsLoadingStatus);
 
   useEffect(() => {
     dispatch(getCurrentUser());
@@ -25,7 +23,7 @@ export function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="login" />} />
+          <Route index element={<LogInPage />} />
           <Route element={<PublicRoutes />}>
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LogInPage />} />
@@ -36,7 +34,7 @@ export function App() {
           <Route path="/*" element={<PageNotFound />} />
         </Route>
       </Routes>
-      <ToastContainer autoClose={1500} />
+      <ToastContainer autoClose={3000} />
     </>
   );
 }

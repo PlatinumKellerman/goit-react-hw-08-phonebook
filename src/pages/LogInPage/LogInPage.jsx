@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useFormik } from 'formik';
+import { LoginLabel } from './LogIn.styled';
 
 export function LogInPage() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export function LogInPage() {
       resetForm();
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required('This field cannot be empty'),
+      email: yup.string().required('This field cannot be empty'),
       password: yup
         .string()
         .min(6)
@@ -33,7 +34,7 @@ export function LogInPage() {
       sx={{
         marginTop: '30px',
         width: 500,
-        height: 300,
+        height: 400,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -49,12 +50,13 @@ export function LogInPage() {
           alignItems: 'center',
         }}
       >
+        <LoginLabel>Please, login:</LoginLabel>
         <TextField
           variant="outlined"
           id="email"
           name="email"
           label="Email"
-          sx={{ mb: '20px', width: '400px' }}
+          sx={{ mb: '45px', width: '400px' }}
           value={formik.values.email}
           onChange={formik.handleChange}
           error={formik.touched.email}
@@ -65,7 +67,7 @@ export function LogInPage() {
           id="password"
           name="password"
           label="Password"
-          sx={{ mb: '30px', width: '400px' }}
+          sx={{ mb: '45px', width: '400px' }}
           value={formik.values.password}
           onChange={formik.handleChange}
           error={formik.touched.password}

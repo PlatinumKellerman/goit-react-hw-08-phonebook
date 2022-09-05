@@ -1,24 +1,31 @@
-import { FcPhoneAndroid } from 'react-icons/fc';
-import { FaUserCheck } from 'react-icons/fa';
+import PersonRemoveOutlinedIcon from '@mui/icons-material/PersonRemoveOutlined';
+import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
+
 import {
   ListItem,
   ItemName,
   ItemNumber,
   DeleteButton,
+  Wrapper,
 } from './ContactsItem.styled';
 
 export function ContactsItem({ delContact, name, number }) {
   return (
     <ListItem>
-      <ItemName>
-        <FaUserCheck size="20" style={{ marginRight: '10px' }} />
-        {name}:
-      </ItemName>
-      <ItemNumber>
-        <FcPhoneAndroid size="20" style={{ marginRight: '10px' }} />
-        {number}
-      </ItemNumber>
-      <DeleteButton onClick={delContact}>Delete</DeleteButton>
+      <Wrapper>
+        <ItemName>
+          <SentimentSatisfiedAltOutlinedIcon sx={{ marginRight: '10px' }} />
+          {name}:
+        </ItemName>
+        <ItemNumber>
+          <PhoneOutlinedIcon sx={{ marginRight: '10px' }} />
+          {number}
+        </ItemNumber>
+      </Wrapper>
+      <DeleteButton onClick={delContact}>
+        <PersonRemoveOutlinedIcon sx={{ fontSize: 30 }} />
+      </DeleteButton>
     </ListItem>
   );
 }

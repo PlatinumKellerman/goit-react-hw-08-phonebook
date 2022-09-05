@@ -2,7 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getFilter } from 'redux/contacts/selectors';
 import { changeFilter } from '../../redux/contacts/actions';
-import { FilterLabel, FilterInput } from './Filter.styled';
+import { FilterLabel } from './Filter.styled';
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
 
 export function Filter({ title }) {
   const value = useSelector(getFilter);
@@ -10,22 +12,32 @@ export function Filter({ title }) {
 
   const onChange = e => dispatch(changeFilter(e.target.value));
 
-  return <div>sfdsd</div>;
+  return (
+    <Container
+      sx={{
+        width: 500,
+        height: 150,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#ffffff',
+      }}
+    >
+      <FilterLabel>Filter</FilterLabel>
+      <TextField
+        variant="outlined"
+        sx={{ width: '400px' }}
+        fullWidth
+        name="filter"
+        label="Find contacts by name"
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
+    </Container>
+  );
 }
-
-// const changeFilterValue = e => {
-//   dispatch(changeFilter(e.currentTarget.value));
-// };
-
-// <FilterLabel htmlFor="filter">
-//   {title}
-//   <FilterInput
-//     name="filter"
-//     type="text"
-//     value={value}
-//     onChange={changeFilterValue}
-//   />
-// </FilterLabel>
 
 Filter.propTypes = {
   title: PropTypes.string,
