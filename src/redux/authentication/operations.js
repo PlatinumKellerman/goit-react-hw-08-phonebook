@@ -12,7 +12,9 @@ export const register = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      toast.error(error);
+      if (error.response.status === 400) {
+        toast.error('This email already exists, or wrong email format');
+      }
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -55,7 +57,9 @@ export const getCurrentUser = createAsyncThunk(
       const data = await authAPI.fetchCurrentUser();
       return data;
     } catch (error) {
-      toast.error(error);
+      if (error.response.status === 401) {
+        toast.error(`You don't have a token`);
+      }
       return thunkAPI.rejectWithValue(error);
     }
   }

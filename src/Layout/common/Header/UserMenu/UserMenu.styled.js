@@ -5,19 +5,18 @@ export const UserMenuWrapper = styled.div`
   align-items: center;
 `;
 
-export const UserMail = styled.p`
+export const UserMail = styled.a`
+  font-size: 18px;
+  text-decoration: none;
+  color: #cdbea7;
   cursor: pointer;
   font-weight: 500;
-  margin-right: 15px;
+  margin-right: 30px;
   &:last-child {
     margin-right: 0px;
   }
   &:hover {
-    color: tomato;
+    color: #d55448;
     font-weight: 500;
   }
-`;
-
-export const UserMenuButton = styled.button`
-  cursor: pointer;
 `;

@@ -4,8 +4,7 @@ import styled from 'styled-components';
 export const HeaderBar = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 15px;
-  background-color: skyblue;
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3),
-    0px 2px 1px -1px rgba(0, 0, 0, 0.3);
+  padding: 30px 50px;
+  background-color: #323030;
+  box-shadow: 0px 5px 5px #323030;
 `;

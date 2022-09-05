@@ -1,14 +1,40 @@
-import { StyledLink, StyledButton } from './AuthNav.styled';
+import { StyledLink } from './AuthNav.styled';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 export const AuthNav = () => {
   return (
-    <nav>
-      <StyledButton>
+    <Stack spacing={5} direction="row">
+      <Button
+        sx={{
+          padding: '0px',
+          width: '120px',
+          backgroundColor: '#d55448',
+          '&:hover': {
+            backgroundColor: '#c29545',
+          },
+        }}
+        type="button"
+        variant="contained"
+        size="medium"
+      >
         <StyledLink to="/register">Register</StyledLink>
-      </StyledButton>
-      <StyledButton>
+      </Button>
+      <Button
+        sx={{
+          padding: '0px',
+          width: '120px',
+          backgroundColor: '#d55448',
+          '&:hover': {
+            backgroundColor: '#c29545',
+          },
+        }}
+        type="button"
+        variant="contained"
+        size="medium"
+      >
         <StyledLink to="/login">Login</StyledLink>
-      </StyledButton>
-    </nav>
+      </Button>
+    </Stack>
   );
 };

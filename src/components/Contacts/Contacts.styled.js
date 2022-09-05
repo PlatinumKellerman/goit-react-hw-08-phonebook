@@ -5,11 +5,11 @@ export const List = styled.ul`
   flex-direction: column;
   background-color: lightsteelblue;
   padding: 30px;
+  border-radius: 15px;
 `;
 
 export const ListWrapper = styled.div`
   display: block;
-  border-radius: 15px;
   height: 470px;
   overflow-y: auto;
   ::-webkit-scrollbar {
