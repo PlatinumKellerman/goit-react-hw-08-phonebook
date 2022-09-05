@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,7 +23,7 @@ export function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<ContactsPage />} />
+          <Route index element={<Navigate to="contacts" />} />
           <Route element={<PublicRoutes />}>
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LogInPage />} />
