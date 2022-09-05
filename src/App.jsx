@@ -23,7 +23,7 @@ export function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<LogInPage />} />
+          <Route index element={<ContactsPage />} />
           <Route element={<PublicRoutes />}>
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LogInPage />} />

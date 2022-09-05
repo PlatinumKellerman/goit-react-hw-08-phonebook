@@ -57,9 +57,7 @@ export const getCurrentUser = createAsyncThunk(
       const data = await authAPI.fetchCurrentUser();
       return data;
     } catch (error) {
-      if (error.response.status === 401) {
-        toast.error(`You don't have a token`);
-      }
+      toast.error(error);
       return thunkAPI.rejectWithValue(error);
     }
   }
