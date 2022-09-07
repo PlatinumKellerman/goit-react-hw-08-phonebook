@@ -37,8 +37,10 @@ export const deleteContactAsync = createAsyncThunk(
       toast.success(`Contact deleted successfully`);
       return await contactsAPI.getContacts();
     } catch (error) {
-      toast.error(error);
-      return rejectWithValue(error);
+      if (error.response.status === 404) {
+        toast.error('Contact already deleted, please refresh page');
+        return rejectWithValue(error);
+      }
     }
   }
 );

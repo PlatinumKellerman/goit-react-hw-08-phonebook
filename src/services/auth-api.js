@@ -1,5 +1,15 @@
 import axios from 'axios';
+// import { store } from '../redux/store';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+
+// const instance = axios.create({
+//   baseURL: 'https://connections-api.herokuapp.com',
+// });
+
+// const token = '';
+
+// const state = store.getState();
+// console.log(state);
 
 export const token = {
   set(token) {
@@ -25,6 +35,8 @@ export async function logOut() {
   return data;
 }
 export async function fetchCurrentUser() {
-  const { data } = await axios.get('/users/current');
+  const { data } = await axios.get('/users/current', {
+    // headers: { Authorization: `Bearer ${token}` },
+  });
   return data;
 }

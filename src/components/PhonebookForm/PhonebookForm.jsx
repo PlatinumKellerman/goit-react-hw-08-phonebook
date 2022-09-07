@@ -10,6 +10,8 @@ import Container from '@mui/material/Container';
 import { useFormik } from 'formik';
 import { Label } from './PhonebookForm.styled';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/material.css';
 
 export function PhonebookForm() {
   const dispatch = useDispatch();
@@ -22,9 +24,11 @@ export function PhonebookForm() {
     },
 
     onSubmit: (values, { resetForm }) => {
+      console.log(values);
       const foundContact = contacts.filter(contact => {
         return contact.name.toLowerCase() === values.name.toLowerCase();
       });
+
       if (foundContact.length > 0) {
         toast.error('This contact already exists');
         return;
@@ -35,11 +39,6 @@ export function PhonebookForm() {
 
     validationSchema: yup.object().shape({
       name: yup.string().required('This field cannot be empty'),
-      number: yup
-        .string()
-        .min(6)
-        .max(18)
-        .required('This field cannot be empty'),
     }),
   });
 
@@ -56,6 +55,7 @@ export function PhonebookForm() {
       }}
     >
       <form
+        id="formx"
         onSubmit={formik.handleSubmit}
         style={{
           display: 'flex',
@@ -75,16 +75,16 @@ export function PhonebookForm() {
           error={formik.touched.name}
           helperText={formik.touched.name && formik.errors.name}
         />
-        <TextField
-          variant="outlined"
-          id="number"
-          name="number"
-          label="Number"
-          sx={{ mb: '30px', width: '400px' }}
-          value={formik.values.number}
-          onChange={formik.handleChange}
-          error={formik.touched.number}
-          helperText={formik.touched.number && formik.errors.number}
+        <PhoneInput
+          country={'ua'}
+          inputStyle={{ marginBottom: '20px', width: '400px' }}
+          inputProps={{
+            name: 'number',
+            required: true,
+            autoFocus: true,
+            value: formik.values.number,
+            onChange: formik.handleChange,
+          }}
         />
         <Button
           sx={{

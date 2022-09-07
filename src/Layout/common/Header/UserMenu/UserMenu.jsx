@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/authentication/operations';
-import { getUserEmail } from 'redux/authentication/selectors';
+import { getUsername } from 'redux/authentication/selectors';
 import { UserMenuWrapper, UserMail } from './UserMenu.styled';
 import Button from '@mui/material/Button';
 
 export function UserMenu() {
   const dispatch = useDispatch();
-  const email = useSelector(getUserEmail);
+  const name = useSelector(getUsername);
 
   const handleLogOut = () => {
     dispatch(logOut());
@@ -14,7 +14,7 @@ export function UserMenu() {
 
   return (
     <UserMenuWrapper>
-      <UserMail href="mailto:info@devstudio.com">Hello, {email}</UserMail>
+      <UserMail href="mailto:info@devstudio.com">Hello, {name}</UserMail>
       <Button
         sx={{
           width: '120px',
