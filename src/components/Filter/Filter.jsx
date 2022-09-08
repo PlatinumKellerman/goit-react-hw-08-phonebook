@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getFilter } from 'redux/contacts/selectors';
 import { changeFilter } from '../../redux/contacts/actions';
-import { FilterLabel } from './Filter.styled';
+import { Title } from './Filter.styled';
 import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 
@@ -24,7 +24,7 @@ export function Filter({ title }) {
         backgroundColor: '#ffffff',
       }}
     >
-      <FilterLabel>Filter</FilterLabel>
+      <Title>Filter</Title>
       <TextField
         variant="outlined"
         sx={{ width: '400px' }}

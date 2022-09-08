@@ -4,7 +4,7 @@ import { logIn } from '../../redux/authentication/operations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
-import { LoginLabel } from './LoginForm.styled';
+import { Title, StyledForm } from './LoginForm.styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -30,15 +30,8 @@ export const LoginForm = () => {
 
   return (
     <>
-      <form
-        onSubmit={formik.handleSubmit}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <LoginLabel>Please, login:</LoginLabel>
+      <StyledForm onSubmit={formik.handleSubmit}>
+        <Title>Please, login:</Title>
         <TextField
           variant="outlined"
           id="email"
@@ -76,7 +69,7 @@ export const LoginForm = () => {
         >
           Login
         </Button>
-      </form>
+      </StyledForm>
     </>
   );
 };

@@ -6,7 +6,7 @@ export const UserMenuWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-export const UserMail = styled.a`
+export const UserMail = styled.p`
   font-size: 18px;
   text-decoration: none;
   color: #cdbea7;

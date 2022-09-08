@@ -6,9 +6,10 @@ export const List = styled.ul`
   flex-direction: column;
   background-color: #ffffff;
   padding: 40px;
+  background-color: #ffffff;
 `;
 
-export const FilterLabel = styled.p`
+export const Title = styled.p`
   display: flex;
   justify-content: center;
   width: 500px;

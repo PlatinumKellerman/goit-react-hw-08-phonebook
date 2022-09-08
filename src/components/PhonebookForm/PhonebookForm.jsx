@@ -6,9 +6,8 @@ import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
 import { useFormik } from 'formik';
-import { Label } from './PhonebookForm.styled';
+import { Title, StyledContainer } from './PhonebookForm.styled';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/material.css';
@@ -42,15 +41,10 @@ export function PhonebookForm() {
   });
 
   return (
-    <Container
+    <StyledContainer
       sx={{
         width: 500,
-        height: 300,
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#ffffff',
       }}
     >
       <form
@@ -62,7 +56,7 @@ export function PhonebookForm() {
           alignItems: 'center',
         }}
       >
-        <Label>Phonebook</Label>
+        <Title>Phonebook</Title>
         <TextField
           variant="outlined"
           id="name"
@@ -103,6 +97,6 @@ export function PhonebookForm() {
           <PersonAddAltOutlinedIcon />
         </Button>
       </form>
-    </Container>
+    </StyledContainer>
   );
 }

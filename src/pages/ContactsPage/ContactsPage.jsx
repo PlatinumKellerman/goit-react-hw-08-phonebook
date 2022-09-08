@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getContactsAsync } from 'redux/contacts/operations';
 import { getIsLoggedIn } from 'redux/authentication/selectors';
-import { Container } from '../../components/Container/Container';
 import { Contacts } from '../../components/Contacts/Contacts';
 import { Filter } from '../../components/Filter/Filter';
 import { PhonebookForm } from '../../components/PhonebookForm/PhonebookForm';
+import { StyledContainer } from './ContactsPage.styled';
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -18,11 +18,11 @@ export const ContactsPage = () => {
   return (
     <>
       {isLoggedIn ? (
-        <Container>
+        <StyledContainer sx={{ width: 500 }}>
           <PhonebookForm></PhonebookForm>
           <Filter></Filter>
           <Contacts></Contacts>
-        </Container>
+        </StyledContainer>
       ) : null}
     </>
   );

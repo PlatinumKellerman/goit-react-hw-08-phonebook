@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { register } from '../../redux/authentication/operations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { RegisterLabel } from './RegisterForm.styled';
+import { Title, StyledForm } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -30,15 +30,8 @@ export const RegisterForm = () => {
   });
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <RegisterLabel>Please, register:</RegisterLabel>
+    <StyledForm onSubmit={formik.handleSubmit}>
+      <Title>Please, register:</Title>
       <TextField
         variant="outlined"
         id="name"
@@ -88,6 +81,6 @@ export const RegisterForm = () => {
       >
         Register
       </Button>
-    </form>
+    </StyledForm>
   );
 };

@@ -4,7 +4,6 @@ import {
   getContactsAsync,
   addContactAsync,
   deleteContactAsync,
-  patchContact,
 } from './operations';
 
 const items = createReducer([], {
@@ -13,12 +12,6 @@ const items = createReducer([], {
   [addContactAsync.fulfilled]: (_, { payload }) => payload,
 
   [deleteContactAsync.fulfilled]: (_, { payload }) => payload,
-
-  [patchContact.fulfilled]: (state, { payload }) =>
-    state.reduce((acc, contact) => {
-      contact.id === payload.id ? acc.push(payload) : acc.push(contact);
-      return acc;
-    }, []),
 });
 
 const filter = createReducer('', {
@@ -35,9 +28,6 @@ const loading = createReducer(false, {
   [deleteContactAsync.pending]: () => true,
   [deleteContactAsync.fulfilled]: () => false,
   [deleteContactAsync.rejected]: () => false,
-  [patchContact.pending]: () => true,
-  [patchContact.fulfilled]: () => false,
-  [patchContact.rejected]: () => false,
 });
 
 export default combineReducers({

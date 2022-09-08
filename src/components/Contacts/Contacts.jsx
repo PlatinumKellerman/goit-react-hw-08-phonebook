@@ -1,5 +1,5 @@
 import { ContactsItem } from './ContactsItem/index';
-import { FilterLabel, List, MessageWrapper, Message } from './Contacts.styled';
+import { Title, List, MessageWrapper, Message } from './Contacts.styled';
 import { getFilteredContacts } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContactAsync } from '../../redux/contacts/operations';
@@ -11,9 +11,9 @@ export function Contacts() {
 
   return (
     <>
-      <FilterLabel>Contacts</FilterLabel>
+      <Title>Contacts</Title>
       {filteredContacts.length > 0 ? (
-        <List sx={{ width: 500, backgroundColor: '#ffffff' }}>
+        <List>
           {filteredContacts.map(({ id, name, number }) => (
             <ContactsItem
               key={id}

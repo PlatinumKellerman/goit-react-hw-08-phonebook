@@ -13,7 +13,9 @@ export const register = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error('This email already exists, or wrong email format');
+        toast.error(
+          'This email already exists, wrong email format, or you used "password" in password'
+        );
       }
       return thunkAPI.rejectWithValue(error);
     }
@@ -57,7 +59,7 @@ export const getCurrentUser = createAsyncThunk(
       const data = await authAPI.fetchCurrentUser();
       return data;
     } catch (error) {
-      toast.error(error);
+      toast.warning('Please, log in');
       return thunkAPI.rejectWithValue(error);
     }
   }

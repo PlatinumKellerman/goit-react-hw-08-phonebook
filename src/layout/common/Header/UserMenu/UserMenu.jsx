@@ -14,7 +14,7 @@ export function UserMenu() {
 
   return (
     <UserMenuWrapper>
-      <UserMail href="mailto:info@devstudio.com">Hello, {name}</UserMail>
+      <UserMail>Hello, {name}</UserMail>
       <Button
         sx={{
           width: '120px',

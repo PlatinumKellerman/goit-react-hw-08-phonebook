@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import Container from '@mui/material/Container';
 
-export const Container = styled.div`
+export const StyledContainer = styled(Container)`
   max-width: 500px;
   padding: 20px 20px;
   margin-right: auto;
