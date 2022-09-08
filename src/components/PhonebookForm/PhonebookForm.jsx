@@ -24,7 +24,6 @@ export function PhonebookForm() {
     },
 
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
       const foundContact = contacts.filter(contact => {
         return contact.name.toLowerCase() === values.name.toLowerCase();
       });
