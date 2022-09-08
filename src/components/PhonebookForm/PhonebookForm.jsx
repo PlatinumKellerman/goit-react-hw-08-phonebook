@@ -77,12 +77,13 @@ export function PhonebookForm() {
         />
         <PhoneInput
           country={'ua'}
+          placeholder={'Enter phone number'}
           inputStyle={{ marginBottom: '20px', width: '400px' }}
+          value={formik.values.number}
           inputProps={{
             name: 'number',
             required: true,
             autoFocus: true,
-            value: formik.values.number,
             onChange: formik.handleChange,
           }}
         />
