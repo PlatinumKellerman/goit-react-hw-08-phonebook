@@ -4,7 +4,8 @@ import * as yup from 'yup';
 import { register } from '../../redux/authentication/operations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Title, StyledForm } from './RegisterForm.styled';
+import { StyledForm } from './RegisterForm.styled';
+import { Title } from '../ui/Title/Title';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();

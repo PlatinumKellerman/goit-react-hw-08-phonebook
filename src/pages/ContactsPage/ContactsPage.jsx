@@ -7,7 +7,7 @@ import { Filter } from '../../components/Filter/Filter';
 import { PhonebookForm } from '../../components/PhonebookForm/PhonebookForm';
 import { StyledContainer } from './ContactsPage.styled';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
 
@@ -27,3 +27,5 @@ export const ContactsPage = () => {
     </>
   );
 };
+
+export default ContactsPage;

@@ -1,8 +1,9 @@
-import * as authAPI from 'services/auth-api';
+import * as authAPI from 'services/auth';
+import * as authAPIToken from 'services/auth-api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-export const token = authAPI.token;
+export const token = authAPIToken.token;
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -12,11 +13,12 @@ export const register = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      if (error.response.status === 400) {
-        toast.error(
-          'This email already exists, wrong email format, or you used "password" in password'
-        );
+      if (error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('This email already exists or wrong email format');
       }
+
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -59,7 +61,6 @@ export const getCurrentUser = createAsyncThunk(
       const data = await authAPI.fetchCurrentUser();
       return data;
     } catch (error) {
-      toast.warning('Please, log in');
       return thunkAPI.rejectWithValue(error);
     }
   }

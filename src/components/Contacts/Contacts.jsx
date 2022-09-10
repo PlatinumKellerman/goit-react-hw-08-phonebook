@@ -1,5 +1,11 @@
 import { ContactsItem } from './ContactsItem/index';
-import { Title, List, MessageWrapper, Message } from './Contacts.styled';
+import {
+  List,
+  MessageWrapper,
+  Message,
+  StyledContainer,
+} from './Contacts.styled';
+import { Title } from '../ui/Title/Title';
 import { getFilteredContacts } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContactAsync } from '../../redux/contacts/operations';
@@ -10,7 +16,12 @@ export function Contacts() {
   const filteredContacts = useSelector(getFilteredContacts);
 
   return (
-    <>
+    <StyledContainer
+      sx={{
+        width: 500,
+        display: 'flex',
+      }}
+    >
       <Title>Contacts</Title>
       {filteredContacts.length > 0 ? (
         <List>
@@ -35,6 +46,6 @@ export function Contacts() {
           </Message>
         </MessageWrapper>
       )}
-    </>
+    </StyledContainer>
   );
 }

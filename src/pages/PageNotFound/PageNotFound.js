@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { GoBackLink } from '../../components/GoBackLink/GoBackLink';
+import { GoBackLink } from '../../components/ui/GoBackLink/GoBackLink';
 import DangerousOutlinedIcon from '@mui/icons-material/DangerousOutlined';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
 
-export const NotFoundPage = styled.div`
+const NotFoundPage = styled.div`
   background-color: #fff;
   margin-right: auto;
   margin-left: auto;
@@ -32,3 +32,5 @@ export function PageNotFound() {
     </>
   );
 }
+
+export default NotFoundPage;

@@ -33,6 +33,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.flag-dropdown {
+  height: 55px;
+}
 `;
 
 export default GlobalStyle;

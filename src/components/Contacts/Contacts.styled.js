@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+import Container from '@mui/material/Container';
+
+export const StyledContainer = styled(Container)`
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+`;
 
 export const List = styled.ul`
   width: 500px;
@@ -7,17 +15,6 @@ export const List = styled.ul`
   background-color: #ffffff;
   padding: 40px;
   background-color: #ffffff;
-`;
-
-export const Title = styled.p`
-  display: flex;
-  justify-content: center;
-  width: 500px;
-  font-size: 26px;
-  font-weight: 600;
-  color: #323030;
-  background-color: #ffffff;
-  padding-bottom: 10px;
 `;
 
 export const MessageWrapper = styled.div`

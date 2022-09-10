@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { getCurrentUser } from './redux/authentication/operations';
 import { PrivateRoutes } from 'hocs/PrivateRoutes';
 import { PublicRoutes } from 'hocs/PublicRoutes';
 import { Layout } from './layout/Layout';
-import { LogInPage } from './pages/LogInPage/LogInPage';
-import { RegisterPage } from './pages/RegisterPage/RegisterPage';
-import { ContactsPage } from './pages/ContactsPage/ContactsPage';
-import { PageNotFound } from './pages/PageNotFound/PageNotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const LogInPage = lazy(() => import('./pages/LogInPage/LogInPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
+const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
+const PageNotFound = lazy(() => import('./pages/PageNotFound/PageNotFound'));
 
 export function App() {
   const dispatch = useDispatch();

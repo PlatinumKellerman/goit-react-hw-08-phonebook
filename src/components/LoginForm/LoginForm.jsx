@@ -4,7 +4,8 @@ import { logIn } from '../../redux/authentication/operations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
-import { Title, StyledForm } from './LoginForm.styled';
+import { StyledForm } from './LoginForm.styled';
+import { Title } from '../ui/Title/Title';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

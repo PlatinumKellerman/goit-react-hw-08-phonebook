@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getFilter } from 'redux/contacts/selectors';
 import { changeFilter } from '../../redux/contacts/actions';
-import { Title } from './Filter.styled';
+import { Title } from '../ui/Title/Title';
 import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 

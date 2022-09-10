@@ -7,7 +7,8 @@ import * as yup from 'yup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
-import { Title, StyledContainer } from './PhonebookForm.styled';
+import { StyledContainer } from './PhonebookForm.styled';
+import { Title } from '../ui/Title/Title';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/material.css';
@@ -19,7 +20,6 @@ export function PhonebookForm() {
   const formik = useFormik({
     initialValues: {
       name: '',
-      number: '',
     },
 
     onSubmit: (values, { resetForm }) => {
@@ -36,7 +36,12 @@ export function PhonebookForm() {
     },
 
     validationSchema: yup.object().shape({
-      name: yup.string().required('This field cannot be empty'),
+      name: yup
+        .string()
+        .matches(/[a-zA-Zа-яА-Я]+/, {
+          message: 'This field must contain at least 1 letter',
+        })
+        .required('This field cannot be empty'),
     }),
   });
 
@@ -71,7 +76,10 @@ export function PhonebookForm() {
         <PhoneInput
           country={'ua'}
           placeholder={'Enter phone number'}
-          inputStyle={{ marginBottom: '20px', width: '400px' }}
+          inputStyle={{
+            marginBottom: '20px',
+            width: '400px',
+          }}
           value={formik.values.number}
           inputProps={{
             name: 'number',
