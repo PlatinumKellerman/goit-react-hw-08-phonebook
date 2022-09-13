@@ -6,3 +6,17 @@ export const StyledLink = styled(Link)`
   color: white;
   padding: 6px 26px;
 `;
+
+export const AuthNavWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const AuthNavTitle = styled.p`
+  text-transform: uppercase;
+  color: #cdbea7;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 5px;
+`;

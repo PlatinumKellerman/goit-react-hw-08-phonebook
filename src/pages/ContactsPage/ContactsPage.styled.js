@@ -6,5 +6,5 @@ export const StyledContainer = styled(Container)`
   padding: 20px 20px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 50px;
+  margin-top: 150px;
 `;
